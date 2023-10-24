@@ -13,14 +13,10 @@ namespace TechOil.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly IConfiguration _configuration;
-
         private readonly ApiContext _dbContext;
 
-
-        public AuthController(IConfiguration configuration, ApiContext dbContext)
+        public AuthController(ApiContext dbContext)
         {
-            _configuration = configuration;
             _dbContext = dbContext;
         }
 
