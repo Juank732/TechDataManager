@@ -66,7 +66,8 @@ namespace TechOil.Controllers
         public async Task<IActionResult> Post(Servicio servicio)
         {
             await _servicioService.AñadirServicio(servicio);
-            return Ok();
+
+            return CreatedAtAction("Get", new { id = servicio.codServicio }, servicio);
         }
 
         //Método para actualizar un servicio en la base de datos.

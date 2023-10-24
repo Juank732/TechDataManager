@@ -57,7 +57,7 @@ builder.Services.AddAuthorization(options =>
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Nombre de tu API", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "TechOil DataManager", Version = "v1" });
 
     // Configura la autenticación para Swagger
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme

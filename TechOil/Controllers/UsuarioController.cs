@@ -44,7 +44,7 @@ namespace TechOil.Controllers
         }
 
         [HttpPost]
-        //[Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Post(Usuario usuario)
         {
             var hashedPassword = BCrypt.Net.BCrypt.HashPassword(usuario.contrasena);
@@ -57,7 +57,8 @@ namespace TechOil.Controllers
             contrasena = hashedPassword
             };
             await _usuarioService.AñadirUsuario(nuevoUsuario);
-            return Ok();
+
+            return CreatedAtAction("Get", new { id = usuario.codUsuario }, usuario);
         }
 
         [HttpPut]

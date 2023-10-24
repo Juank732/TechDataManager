@@ -13,10 +13,13 @@ namespace TechOil.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
+
         private readonly ApiContext _dbContext;
+
 
         public AuthController(ApiContext dbContext)
         {
+            
             _dbContext = dbContext;
         }
 
@@ -41,7 +44,7 @@ namespace TechOil.Controllers
             var usuario = _dbContext.Usuarios.FirstOrDefault(u => u.codUsuario == model.codUsuario);
 
             //Verifica si la contraseña ingresada coincide con la contraseña encriptada en la base de datos.
-
+			//------------------Desencripta la contraseña en DB----------------------
             if(usuario != null && BCrypt.Net.BCrypt.Verify(model.contrasena, usuario.contrasena))
             {
                 return true;

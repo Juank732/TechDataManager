@@ -71,7 +71,8 @@ namespace TechOil.Controllers
         public async Task<IActionResult> Post(Proyecto proyecto)
         {
             await _proyectoService.AñadirProyecto(proyecto);
-            return Ok();
+
+            return CreatedAtAction("Get", new { id = proyecto.codProyecto }, proyecto);
         }
 
         //Método para actualizar un proyecto en la base de datos.

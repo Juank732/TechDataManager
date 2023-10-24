@@ -49,7 +49,8 @@ namespace TechOil.Controllers
         public async Task<IActionResult> Post(Trabajo trabajo)
         {
             await _trabajoService.AñadirTrabajo(trabajo);
-            return Ok();
+
+            return CreatedAtAction("Get", new { id = trabajo.codTrabajo }, trabajo);
         }
 
         [HttpPut]
