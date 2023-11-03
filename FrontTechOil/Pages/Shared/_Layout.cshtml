@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FrontTechOil</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FrontTechOil.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/layout_Style.css"/>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index" style="color:white;">
+                    <img src="https://i.ibb.co/0mBbPsL/techoildata.png" style="width: 150px; height: 75px;"  />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                      
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-page="/Usuarios/Usuarios">Usuarios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-page="/Proyectos/Proyectos">Proyectos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-page="/Trabajos/Trabajos">Trabajos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-page="/Servicios/Servicios">Servicios</a>
+                        </li>
+                    </ul>
+                    <button id="boton-logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar Sesion</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - TechOil Data Manager - <a asp-area="" asp-page="/Privacy"></a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://kit.fontawesome.com/f3d9777f93.js" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            var token = localStorage.getItem("token");
+
+            if (!token) {
+                window.location.href = '/';
+            }
+        });
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+   
+        <script>
+                    document.getElementById('boton-logout').addEventListener('click', function () {
+                localStorage.removeItem('token');
+                        window.location.href="/";
+            });
+        </script>
+    
+
+
+    
+</body>
+</html>

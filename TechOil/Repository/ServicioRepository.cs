@@ -13,16 +13,16 @@ namespace TechOil.Repository
             _dbContext = dbContext;
         }
 
-        public IEnumerable<Servicio> GetAll()
+        public async Task<IEnumerable<Servicio>> GetAll()
         {
             var usuarios = _dbContext.Servicios.ToList();
             return usuarios;
         }
 
-        public IEnumerable<Servicio> GetActive()
+        public async Task<IEnumerable<Servicio>> GetActive()
         {
             return _dbContext.Servicios.Where(s => s.estado == true);
-            
+
         }
 
         public async Task<Servicio> GetById(int codServicio)
@@ -46,7 +46,7 @@ namespace TechOil.Repository
         {
             var usuario = await GetById(codServicio);
 
-            if(usuario != null)
+            if (usuario != null)
             {
                 _dbContext.Servicios.Remove(usuario);
                 await _dbContext.SaveChangesAsync();

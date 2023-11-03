@@ -1,6 +1,4 @@
-﻿using Abp.Extensions;
-using TechOil.DataAccess;
-using TechOil.Models;
+﻿using TechOil.Models;
 using TechOil.Repository;
 
 namespace TechOil.Services
@@ -14,9 +12,9 @@ namespace TechOil.Services
             _proyectoRepository = proyectoRepository;
         }
 
-        public virtual IEnumerable<Proyecto> ObtenerTodosLosProyectos()
+        public async Task<IEnumerable<Proyecto>> ObtenerTodosLosProyectos()
         {
-            return _proyectoRepository.GetAll();
+            return await _proyectoRepository.GetAll();
         }
 
 
@@ -25,16 +23,16 @@ namespace TechOil.Services
             return await _proyectoRepository.GetById(codProyecto);
         }
 
-        public IEnumerable<Proyecto> ObtenerProyectoPorEstado(int estado)
+        public async Task<IEnumerable<Proyecto>> ObtenerProyectoPorEstado(int estado)
         {
-            return _proyectoRepository.GetByState(estado);
+            return await _proyectoRepository.GetByState(estado);
         }
 
         public async Task AñadirProyecto(Proyecto proyecto)
         {
             await _proyectoRepository.Add(proyecto);
         }
-  
+
         public async Task ActualizarProyecto(Proyecto proyecto)
         {
             await _proyectoRepository.Update(proyecto);

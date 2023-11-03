@@ -6,7 +6,7 @@ namespace TechOil.Repository
     {
         Task<Usuario> GetById(int codUsuario);
 
-        IEnumerable<Usuario> GetAll();
+        Task<IEnumerable<Usuario>> GetAll();
 
         Task Add(Usuario entity);
 

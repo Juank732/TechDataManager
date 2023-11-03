@@ -1,5 +1,4 @@
-﻿using System;
-using System.IdentityModel.Tokens.Jwt;
+﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
@@ -13,14 +12,13 @@ namespace TechOil.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly IConfiguration _configuration;
 
         private readonly ApiContext _dbContext;
 
 
-        public AuthController(IConfiguration configuration, ApiContext dbContext)
+        public AuthController(ApiContext dbContext)
         {
-            _configuration = configuration;
+
             _dbContext = dbContext;
         }
 
@@ -42,11 +40,11 @@ namespace TechOil.Controllers
 
         private bool ValidarCredenciales(LoginModel model)
         {
-            var usuario = _dbContext.Usuarios.FirstOrDefault(u => u.codUsuario == model.codUsuario);
+            var usuario = _dbContext.Usuarios.FirstOrDefault(u => u.nombre == model.nombre);
 
             //Verifica si la contraseña ingresada coincide con la contraseña encriptada en la base de datos.
-
-            if(usuario != null && BCrypt.Net.BCrypt.Verify(model.contrasena, usuario.contrasena))
+            //------------------Desencripta la contraseña en DB----------------------
+            if (usuario != null && BCrypt.Net.BCrypt.Verify(model.contrasena, usuario.contrasena))
             {
                 return true;
             }
@@ -57,37 +55,38 @@ namespace TechOil.Controllers
         private string CrearTokenJWT(LoginModel model)
         {
 
-            var usuario = _dbContext.Usuarios.FirstOrDefault(u => u.codUsuario == model.codUsuario);
+            var usuario = _dbContext.Usuarios.FirstOrDefault(u => u.nombre == model.nombre);
 
-            if(usuario != null) { 
-
-            //Esta lista contiene la información de identidad del usuario ingresado.
-            var claims = new List<Claim>
+            if (usuario != null)
             {
-                new Claim(ClaimTypes.NameIdentifier, model.codUsuario.ToString()), 
-                new Claim(ClaimTypes.Name, model.codUsuario.ToString()), 
+
+                //Esta lista contiene la información de identidad del usuario ingresado.
+                var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, model.nombre.ToString()),
+                new Claim(ClaimTypes.Name, model.nombre.ToString()),
                 new Claim(ClaimTypes.Role, usuario.tipo == 1 ? "admin" : "consultor")
             };
 
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("bd1a1ccf8095037f361a4d351e7c0de65f0776bfc2f478ea8d312c763bb6caca"));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("bd1a1ccf8095037f361a4d351e7c0de65f0776bfc2f478ea8d312c763bb6caca"));
+                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-            var token = new JwtSecurityToken(
-                issuer: "Issuer",
-                audience: "Audience",
-                claims: claims,
-                expires: DateTime.UtcNow.AddHours(1), // Define la duración del token
-                signingCredentials: creds
-            );
+                var token = new JwtSecurityToken(
+                    issuer: "Issuer",
+                    audience: "Audience",
+                    claims: claims,
+                    expires: DateTime.UtcNow.AddHours(1), // Define la duración del token
+                    signingCredentials: creds
+                );
 
-            //Se retorna el token generado
-            return new JwtSecurityTokenHandler().WriteToken(token);
+                //Se retorna el token generado
+                return new JwtSecurityTokenHandler().WriteToken(token);
             };
 
             return null;
 
-            
+
         }
     }
 

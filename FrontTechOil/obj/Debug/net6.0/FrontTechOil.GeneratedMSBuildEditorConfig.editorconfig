@@ -1,0 +1,81 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = FrontTechOil
+build_property.RootNamespace = FrontTechOil
+build_property.ProjectDir = C:\Alkemy\TechOil\FrontTechOil\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Alkemy\TechOil\FrontTechOil
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Alkemy/TechOil/FrontTechOil/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Alkemy/TechOil/FrontTechOil/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Alkemy/TechOil/FrontTechOil/Pages/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Alkemy/TechOil/FrontTechOil/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Alkemy/TechOil/FrontTechOil/Pages/Proyectos/EditarProyecto.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJveWVjdG9zXEVkaXRhclByb3llY3RvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Alkemy/TechOil/FrontTechOil/Pages/Proyectos/Proyectos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJveWVjdG9zXFByb3llY3Rvcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Alkemy/TechOil/FrontTechOil/Pages/Servicios/EditarServicio.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VydmljaW9zXEVkaXRhclNlcnZpY2lvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Alkemy/TechOil/FrontTechOil/Pages/Servicios/Servicios.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VydmljaW9zXFNlcnZpY2lvcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Alkemy/TechOil/FrontTechOil/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Alkemy/TechOil/FrontTechOil/Pages/Trabajos/EditarTrabajo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhYmFqb3NcRWRpdGFyVHJhYmFqby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Alkemy/TechOil/FrontTechOil/Pages/Trabajos/Trabajos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhYmFqb3NcVHJhYmFqb3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Alkemy/TechOil/FrontTechOil/Pages/Usuarios/EditarUsuario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXN1YXJpb3NcRWRpdGFyVXN1YXJpby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Alkemy/TechOil/FrontTechOil/Pages/Usuarios/Usuarios.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXN1YXJpb3NcVXN1YXJpb3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Alkemy/TechOil/FrontTechOil/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Alkemy/TechOil/FrontTechOil/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Alkemy/TechOil/FrontTechOil/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-kcj2f3vkyq

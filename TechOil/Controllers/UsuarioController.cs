@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TechOil.Models;
+using TechOil.Models.DTO;
 using TechOil.Services;
 
 namespace TechOil.Controllers
@@ -18,9 +19,9 @@ namespace TechOil.Controllers
 
         [HttpGet]
         [Authorize(Roles = "admin,consultor")]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            var usuarios = _usuarioService.ObtenerTodosLosUsuarios();
+            var usuarios = await _usuarioService.ObtenerTodosLosUsuarios();
 
             if (usuarios == null)
             {
@@ -44,20 +45,21 @@ namespace TechOil.Controllers
         }
 
         [HttpPost]
-        //[Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Post(Usuario usuario)
         {
             var hashedPassword = BCrypt.Net.BCrypt.HashPassword(usuario.contrasena);
 
             var nuevoUsuario = new Usuario
             {
-            nombre = usuario.nombre,
-            dni = usuario.dni,
-            tipo = usuario.tipo,
-            contrasena = hashedPassword
+                nombre = usuario.nombre,
+                dni = usuario.dni,
+                tipo = usuario.tipo,
+                contrasena = hashedPassword
             };
             await _usuarioService.AñadirUsuario(nuevoUsuario);
-            return Ok();
+
+            return CreatedAtAction("Get", new { id = usuario.codUsuario }, usuario);
         }
 
         [HttpPut]

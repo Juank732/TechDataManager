@@ -1,0 +1,26 @@
+﻿#fila-administrar
+{
+    width: 200px;
+}
+
+#boton-administrar
+{
+    height: 2rem;
+    width: 100px;
+    display: flex; 
+    align-items: center;
+}
+
+#boton-administrar:hover{
+
+}
+
+a{
+    text-decoration: none;
+}
+.btn-primary {
+    border: none;
+    outline: none;
+    background-color: none;
+    border-color: transparent;
+}

@@ -1,0 +1,98 @@
+﻿@page "/trabajos"
+@model FrontTechOil.Pages.Trabajos.TrabajosModel
+@{
+}
+<head>
+    <link rel="stylesheet" href="/css/ui_Trabajo.css">
+</head>
+
+<body>
+<!-- Botón que activa el modal -->
+    <button type="button" class="btn btn-primary" style="float:right" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <i class="fa-solid fa-plus"></i> Agregar
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nuevo Trabajo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulario -->
+                    <form method="post" asp-action="OnPostAsync">
+                        <div class="form-group">
+                            <label for="fecha">Fecha</label>
+                            <input type="datetime" class="form-control" id="fecha" name="Trabajo.fecha" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cantHoras">Cantidad de Horas</label>
+                            <input type="number" class="form-control" id="cantHoras" name="Trabajo.cantHoras" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="valorHora">Valor por Hora</label>
+                            <input type="text" class="form-control" id="valorHora" name="Trabajo.valorHora" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="costo">Costo</label>
+                            <input type="text" class="form-control" id="costo" name="Trabajo.costo" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="codProyecto">Código de Proyecto</label>
+                            <input type="number" class="form-control" id="codProyecto" name="Trabajo.codProyecto" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="codServicio">Código de Servicio</label>
+                            <input type="number" class="form-control" id="codServicio" name="Trabajo.codServicio" required/>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-success">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Tabla de Trabajos-->
+    <table class="table" style="text-align: center;">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Cant. Horas</th>
+                <th scope="col">Valor Hora</th>
+                <th scope="col">Costo</th>
+                <th scope="col">Cód. Proyecto</th>
+                <th scope="col">Cód. Servicio</th>
+                <th id="fila-administrar" scope="col"></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Trabajo in Model.ListaTrabajos)
+            {
+                <tr>
+                    <th scope="row">@Trabajo.codTrabajo</th>
+                    <td>@Trabajo.fecha</td>
+                    <td>@Trabajo.cantHoras</td>
+                    <td>@Trabajo.valorHora</td>
+                    <td>@Trabajo.costo</td>
+                    <td>@Trabajo.codProyecto</td>
+                    <td>@Trabajo.codServicio</td>
+                    <td>
+                        <a href="/Trabajos/editar/@Trabajo.codTrabajo" class="btn btn-primary">
+                            <button type="button" id="boton-administrar" class="btn btn-primary">
+                                <i class="fa-solid fa-gear"></i> Administrar
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</body>

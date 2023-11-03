@@ -12,9 +12,9 @@ namespace TechOil.Services
             _trabajoRepository = trabajoRepository;
         }
 
-        public IEnumerable<Trabajo> ObtenerTodosLosTrabajos()
+        public async Task<IEnumerable<Trabajo>> ObtenerTodosLosTrabajos()
         {
-            return _trabajoRepository.GetAll();
+            return await _trabajoRepository.GetAll();
         }
 
 

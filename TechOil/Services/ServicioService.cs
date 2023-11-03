@@ -12,9 +12,9 @@ namespace TechOil.Services
             _servicioRepository = servicioRepository;
         }
 
-        public IEnumerable<Servicio> ObtenerTodosLosServicios()
+        public async Task<IEnumerable<Servicio>> ObtenerTodosLosServicios()
         {
-            return _servicioRepository.GetAll();
+            return await _servicioRepository.GetAll();
         }
 
 
@@ -23,9 +23,9 @@ namespace TechOil.Services
             return await _servicioRepository.GetById(codServicio);
         }
 
-        public IEnumerable<Servicio> ObtenerServiciosActivos()
+        public async Task<IEnumerable<Servicio>> ObtenerServiciosActivos()
         {
-            return _servicioRepository.GetActive();
+            return await _servicioRepository.GetActive();
         }
         public async Task AñadirServicio(Servicio servicio)
         {

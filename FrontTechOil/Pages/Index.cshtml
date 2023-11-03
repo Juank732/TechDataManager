@@ -1,0 +1,33 @@
+﻿@page "/Index"
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+@{
+    var token = TempData["Token"] as string; 
+}
+<head>
+    <link rel="stylesheet" href="/css/ui_home.css">
+
+</head>
+
+<body>
+<div class="text-center">
+        <h1 class="display-4">Bienvenido a TechOil Data Manager</h1>
+</div>
+<div>
+    <h3 style="text-align: center; color:#ddd;" >
+        <p> Digitaliza tus registros y obtén un control total sobre tus proyectos de Oil & Gas.</p>
+    </h3>
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var token = '@TempData["Token"]'; // Obtengo el token desde TempData
+        if (token) {
+            localStorage.setItem("token", token); // Establezco el token en localStorage
+        }
+    });  
+</script>
+</body>

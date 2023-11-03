@@ -1,0 +1,90 @@
+﻿@page "/usuarios"
+@model FrontTechOil.Pages.UsuariosModel
+@{
+
+}
+<head>
+    <link rel="stylesheet" href="/css/ui_usuario.css">
+</head>
+<!-- Botón que activa el modal -->
+<button type="button" class="btn btn-primary" style="float:right" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <i class="fa-solid fa-plus"></i> Agregar
+</button>
+<body>
+<!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nuevo Usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulario -->
+                    <form method="post" asp-action="OnPostAsync">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" name="usuario.Nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dni">DNI</label>
+                            <input type="number" class="form-control" id="dni" name="usuario.DNI" min="1000000" max="99999999" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tipo">Tipo</label>
+                            <input type="number" class="form-control" id="tipo" name="usuario.Tipo" min="1" max="2" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contrasena">Contraseña</label>
+                            <input type="password" class="form-control" id="contrasena" name="usuario.contrasena" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Tabla de usuarios-->
+    <table class="table" style="text-align: center">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">DNI</th>
+                <th scope="col">Tipo</th>
+                <th id="fila-administrar" scope="col"></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var usuario in Model.ListaUsuarios)
+            {
+                <tr>
+                    <th scope="row">@usuario.codUsuario</th>
+                    <td>@usuario.nombre</td>
+                    <td>@usuario.dni</td>
+                    <td>@usuario.tipo</td>
+                    <td>
+                        <a href="/usuarios/editar/@usuario.codUsuario"  class="btn btn-primary">
+                            <button type="button" id="boton-administrar" style="width:auto;" class="btn btn-primary">
+                                <i class="fa-solid fa-gear" style="margin-right: 5px;"> </i>Administrar
+                        </button>
+                        </a>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+</body>
+
+@section Scripts{
+    <!-- Iconos de FontAwesome-->
+    <script src="https://kit.fontawesome.com/f3d9777f93.js" crossorigin="anonymous"></script>
+}
+

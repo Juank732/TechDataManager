@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
 
 namespace TechOil.Models
 {
@@ -18,13 +17,13 @@ namespace TechOil.Models
 
     }
 
-    public class ProyectoDTO
-    {
-        public string nombre { get; set; }
-        public string direccion { get; set; }
-        public int estado { get; set; }
-    }
+    //public class ProyectoDTO
+    //{
+    //    public string nombre { get; set; }
+    //    public string direccion { get; set; }
+    //    public int estado { get; set; }
+    //}
 
 
-    
+
 }

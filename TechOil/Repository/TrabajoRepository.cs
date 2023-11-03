@@ -13,7 +13,7 @@ namespace TechOil.Repository
             _dbContext = dbContext;
         }
 
-        public IEnumerable<Trabajo> GetAll()
+        public async Task<IEnumerable<Trabajo>> GetAll()
         {
             var trabajos = _dbContext.Trabajos.ToList();
 

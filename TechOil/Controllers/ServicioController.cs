@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using TechOil.Services;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TechOil.Models;
-using Microsoft.AspNetCore.Authorization;
+using TechOil.Models.DTO;
+using TechOil.Services;
 
 namespace TechOil.Controllers
 {
@@ -18,9 +19,9 @@ namespace TechOil.Controllers
         //Método para listar todos los servicios existentes en la base de datos.
         [HttpGet]
         [Authorize(Roles = "admin,consultor")]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            var servicios = _servicioService.ObtenerTodosLosServicios();
+            var servicios = await _servicioService.ObtenerTodosLosServicios();
 
             if (servicios == null)
             {
@@ -48,11 +49,11 @@ namespace TechOil.Controllers
         [HttpGet]
         [Authorize(Roles = "admin,consultor")]
         [Route("filtrar/ServiciosActivos")]
-        public IActionResult GetActive()
+        public async Task<IActionResult> GetActive()
         {
-            var serviciosActivos = _servicioService.ObtenerServiciosActivos();
+            var serviciosActivos = await _servicioService.ObtenerServiciosActivos();
 
-            if(serviciosActivos.Any())
+            if (serviciosActivos.Any())
             {
                 return Ok(serviciosActivos);
             }
@@ -66,7 +67,8 @@ namespace TechOil.Controllers
         public async Task<IActionResult> Post(Servicio servicio)
         {
             await _servicioService.AñadirServicio(servicio);
-            return Ok();
+
+            return CreatedAtAction("Get", new { id = servicio.codServicio }, servicio);
         }
 
         //Método para actualizar un servicio en la base de datos.
@@ -76,8 +78,8 @@ namespace TechOil.Controllers
         public async Task<IActionResult> Put(int codServicio, ServicioDTO servicio)
         {
             var _servicio = await _servicioService.ObtenerServicio(codServicio);
-            
-            if(_servicio == null)
+
+            if (_servicio == null)
             {
                 return NotFound();
             }

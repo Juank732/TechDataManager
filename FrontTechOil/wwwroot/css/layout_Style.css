@@ -1,0 +1,32 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600&display=swap');
+
+
+.navbar {
+    background-color: #2980B9;
+    font-family: 'Gabarito', sans-serif;
+    
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+    font-size: 1.2rem;
+   
+}
+.navbar-nav{
+    gap: 15px;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #ECF0F1;
+}
+
+footer {
+    text-align: center;
+    background-color: #2C3E50;
+    color: #ECF0F1;
+    width: 100vw;
+}
+
+    footer > div {
+        color: #ECF0F1;
+    }

@@ -1,0 +1,90 @@
+﻿@page "/servicios"
+@model FrontTechOil.Pages.Servicios.ServiciosModel
+@{
+}
+
+<head>
+    <link rel="stylesheet" href="/css/ui_Servicio.css"> <!-- Carga la hoja de estilos -->
+</head>
+
+<body>
+<!-- Botón que activa el modal -->
+    <button type="button" class="btn btn-primary" style="float:right" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <i class="fa-solid fa-plus"></i> Agregar
+    </button>
+
+<!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nuevo Servicio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulario -->
+                    <form method="post" asp-action="OnPostAsync">
+                        <div class="form-group">
+                            <label for="descr">Descripción</label>
+                            <input type="text" class="form-control" id="descr" name="Servicio.descr" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Estado</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="Servicio.estado" id="estadoTrue" value="true" checked readonly>
+                                <label class="form-check-label" for="estadoTrue">True</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="Servicio.estado" id="estadoFalse" value="false">
+                                <label class="form-check-label" for="estadoFalse">False</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="valorHora">Valor por Hora</label>
+                            <input type="number" class="form-control" id="estado" name="Servicio.valorHora" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-success">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabla de Servicios-->
+    <table class="table" style="text-align: center">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Valor por Hora</th>
+                <th id="fila-administrar" scope="col"></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Servicio in Model.ListaServicios)
+            {
+                <tr>
+                    <th scope="row">@Servicio.codServicio</th>
+                    <td>@Servicio.descr</td>
+                    <td>@Servicio.estado</td>
+                    <td>@Servicio.valorHora</td>
+                    <td>
+                        <a href="/Servicios/editar/@Servicio.codServicio" class="btn btn-primary">
+                            <button type="button" id="boton-administrar" class="btn btn-primary">
+                                <i class="fa-solid fa-gear"></i> Administrar
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</body>

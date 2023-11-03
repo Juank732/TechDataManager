@@ -1,10 +1,7 @@
 using Moq;
 using TechOil.Models;
-using TechOil.Services;
 using TechOil.Repository;
-using System.Net;
-using Microsoft.AspNetCore.Mvc;
-using TechOil.Controllers;
+using TechOil.Services;
 
 namespace TechOil.Tests
 {

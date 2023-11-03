@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TechOil.Models;
+using TechOil.Models.DTO;
 using TechOil.Services;
 
 namespace TechOil.Controllers
@@ -18,9 +19,9 @@ namespace TechOil.Controllers
 
         [HttpGet]
         [Authorize(Roles = "admin,consultor")]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            var trabajos = _trabajoService.ObtenerTodosLosTrabajos();
+            var trabajos = await _trabajoService.ObtenerTodosLosTrabajos();
 
             if (trabajos == null)
             {
@@ -49,7 +50,8 @@ namespace TechOil.Controllers
         public async Task<IActionResult> Post(Trabajo trabajo)
         {
             await _trabajoService.AñadirTrabajo(trabajo);
-            return Ok();
+
+            return CreatedAtAction("Get", new { id = trabajo.codTrabajo }, trabajo);
         }
 
         [HttpPut]

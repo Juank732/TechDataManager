@@ -2,7 +2,7 @@
 {
     public class LoginModel
     {
-        public int codUsuario { get; set; }
+        public string nombre { get; set; }
 
         public string contrasena { get; set; }
 

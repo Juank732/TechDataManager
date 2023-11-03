@@ -1,10 +1,10 @@
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using TechOil.DataAccess;
 using TechOil.Repository;
 using TechOil.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,7 +24,7 @@ builder.Services.AddScoped<ServicioService>();
 builder.Services.AddScoped<IServicioRepository, ServicioRepository>();
 
 builder.Services.AddScoped<ProyectoService>();
-builder.Services.AddScoped<IProyectoRepository,ProyectoRepository>();
+builder.Services.AddScoped<IProyectoRepository, ProyectoRepository>();
 
 builder.Services.AddScoped<TrabajoService>();
 builder.Services.AddScoped<ITrabajoRepository, TrabajoRepository>();
@@ -57,7 +57,7 @@ builder.Services.AddAuthorization(options =>
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Nombre de tu API", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "TechOil DataManager", Version = "v1" });
 
     // Configura la autenticación para Swagger
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme

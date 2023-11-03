@@ -1,6 +1,6 @@
-﻿using TechOil.Models;
+﻿using Microsoft.EntityFrameworkCore;
 using TechOil.DataAccess;
-using Microsoft.EntityFrameworkCore;
+using TechOil.Models;
 
 namespace TechOil.Repository
 {
@@ -13,13 +13,13 @@ namespace TechOil.Repository
             _dbContext = dbContext;
         }
 
-        public IEnumerable<Proyecto> GetAll()
+        public async Task<IEnumerable<Proyecto>> GetAll()
         {
             var proyectos = _dbContext.Proyectos.ToList();
             return proyectos;
         }
 
-        public IEnumerable<Proyecto> GetByState(int estado)
+        public async Task<IEnumerable<Proyecto>> GetByState(int estado)
         {
             var proyectos = _dbContext.Proyectos.Where(p => p.estado == estado);
             return proyectos;

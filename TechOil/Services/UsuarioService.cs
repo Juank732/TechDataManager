@@ -13,9 +13,9 @@ namespace TechOil.Services
             _usuarioRepository = usuarioRepository;
         }
 
-        public IEnumerable<Usuario> ObtenerTodosLosUsuarios()
+        public async Task<IEnumerable<Usuario>> ObtenerTodosLosUsuarios()
         {
-            return _usuarioRepository.GetAll();
+            return await _usuarioRepository.GetAll();
         }
 
 

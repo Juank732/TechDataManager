@@ -5,7 +5,9 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechOil", "TechOil\TechOil.csproj", "{C86BF45A-EE97-4831-8E62-D3E759AE78C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSTest", "MSTest\MSTest.csproj", "{39DA4806-1A62-4EAA-9468-81CA7CA41BFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSTest", "MSTest\MSTest.csproj", "{39DA4806-1A62-4EAA-9468-81CA7CA41BFB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrontTechOil", "FrontTechOil\FrontTechOil.csproj", "{AE2264F7-E205-4BEE-80C3-7C5D5C0A0581}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{39DA4806-1A62-4EAA-9468-81CA7CA41BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39DA4806-1A62-4EAA-9468-81CA7CA41BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39DA4806-1A62-4EAA-9468-81CA7CA41BFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE2264F7-E205-4BEE-80C3-7C5D5C0A0581}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE2264F7-E205-4BEE-80C3-7C5D5C0A0581}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE2264F7-E205-4BEE-80C3-7C5D5C0A0581}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE2264F7-E205-4BEE-80C3-7C5D5C0A0581}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

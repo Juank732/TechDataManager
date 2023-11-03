@@ -1,0 +1,61 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600&display=swap');
+
+* {
+    font-family: 'Gabarito', sans-serif;
+}
+
+body {
+    max-width: 1920px;
+    background: rgb(44,62,80);
+    background: radial-gradient(circle, rgba(44,62,80,1) 0%, rgba(91,157,225,1) 13%, rgba(41,128,185,1) 100%);
+}
+
+
+#formulario {
+    display: flex;
+    justify-content: center;
+    margin: 15vh auto;
+    border-radius: 20px;
+    padding: 20px;
+    width: 500px;
+    background-color: #ECF0F1;
+    color: #2C3E50;
+}
+h2{
+    text-align:center;
+}
+
+#logo-login{
+    max-width: 150px;
+}
+
+#form-logocontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    margin-top: 15px;
+    width: 200px;
+    align-self: center;
+    background-color: #E74C3C;
+}
+
+
+.btn-primary{
+    background-color: #E74C3C;
+    border-radius: 999px;
+    border: none;
+    margin-top: 15px;
+}
+
+label{
+    margin: 10px 0;
+}
+
+#login-form{
+    display: flex;
+    flex-direction: column;
+
+}

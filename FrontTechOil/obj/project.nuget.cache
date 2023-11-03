@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "6Jp9yyQMojJkALNvbPPlOFHSfF7qyvN0sEY0pvTpX0KowBxocXQ7/jRsyT7oBJpZoJJ5O042aG+KnhvisryQiA==",
+  "success": true,
+  "projectFilePath": "C:\\Alkemy\\TechOil\\FrontTechOil\\FrontTechOil.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Juan\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

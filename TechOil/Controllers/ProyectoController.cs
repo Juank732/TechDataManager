@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TechOil.Models;
+using TechOil.Models.DTO;
 using TechOil.Services;
 
 namespace TechOil.Controllers
@@ -12,18 +13,18 @@ namespace TechOil.Controllers
     {
         //Se almacena una instancia de la clase ProyectoService.
         private readonly ProyectoService _proyectoService;
-        
+
         public ProyectoController(ProyectoService proyectoService)
         {
             _proyectoService = proyectoService;
-            
+
         }
         //Método para devolver todos los proyectos existentes en la base de datos.
         [HttpGet]
         [Authorize(Roles = "admin,consultor")]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            var proyectos = _proyectoService.ObtenerTodosLosProyectos();
+            var proyectos = await _proyectoService.ObtenerTodosLosProyectos();
 
             if (proyectos == null)
             {
@@ -31,7 +32,7 @@ namespace TechOil.Controllers
             }
 
             return Ok(proyectos);
-            
+
         }
         //Método para buscar un proyecto en la base de datos mediante su código de identificación.
         [HttpGet]
@@ -52,9 +53,9 @@ namespace TechOil.Controllers
         [HttpGet]
         [Authorize(Roles = "admin,consultor")]
         [Route("filtrar/{estado}")]
-        public IActionResult GetByEstado(int estado)
+        public async Task<IActionResult> GetByEstado(int estado)
         {
-            var proyectos = _proyectoService.ObtenerProyectoPorEstado(estado);
+            var proyectos = await _proyectoService.ObtenerProyectoPorEstado(estado);
 
             //En caso de no encontrar proyectos con el estado requerido devuelve un 404;
             if (proyectos.Count() == 0)
@@ -71,7 +72,8 @@ namespace TechOil.Controllers
         public async Task<IActionResult> Post(Proyecto proyecto)
         {
             await _proyectoService.AñadirProyecto(proyecto);
-            return Ok();
+
+            return CreatedAtAction("Get", new { id = proyecto.codProyecto }, proyecto);
         }
 
         //Método para actualizar un proyecto en la base de datos.
@@ -82,7 +84,7 @@ namespace TechOil.Controllers
         {
             var _proyecto = await _proyectoService.ObtenerProyecto(codProyecto);
 
-            if(_proyecto == null)
+            if (_proyecto == null)
             {
                 return NotFound();
             }
@@ -103,7 +105,7 @@ namespace TechOil.Controllers
         {
             var proyecto = await _proyectoService.ObtenerProyecto(codProyecto);
 
-            if(proyecto == null)
+            if (proyecto == null)
             {
                 return NotFound();
             }
@@ -115,7 +117,7 @@ namespace TechOil.Controllers
 
     }
 
-        
+
 
 
 }

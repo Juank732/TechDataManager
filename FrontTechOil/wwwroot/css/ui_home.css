@@ -1,0 +1,17 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;600&display=swap');
+
+
+
+body {
+    background: url(https://i.ibb.co/FK34Xb1/9ac90107-cf7d-4aa3-a639-0b74ed3142ce.jpg) no-repeat;
+    background-position: bottom center;
+    background-color: rgba(80, 80, 80, 0.8);
+    background-size: cover;
+    background-blend-mode: multiply;
+}
+
+h1 {
+    color: white;
+    font-weight: 500;
+    font-family: 'Frank Ruhl Libre', serif;
+}

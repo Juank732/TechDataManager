@@ -13,9 +13,9 @@ namespace TechOil.Repository
             _dbContext = dbContext;
         }
 
-        public IEnumerable<Usuario> GetAll()
+        public async Task<IEnumerable<Usuario>> GetAll()
         {
-            var usuarios = _dbContext.Usuarios.ToList();
+            var usuarios = await _dbContext.Usuarios.ToListAsync();
             return usuarios;
         }
 

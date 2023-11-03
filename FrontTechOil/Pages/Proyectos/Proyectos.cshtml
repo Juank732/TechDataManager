@@ -1,0 +1,80 @@
+﻿@page "/proyectos"
+@model FrontTechOil.Pages.Proyectos.ProyectosModel
+@{
+}
+<head>
+    <link rel="stylesheet" href="/css/ui_Proyecto.css"> <!-- Aplica la hoja de estilos-->
+</head>
+
+<body>
+<!-- Botón que activa el modal al presionarlo -->
+    <button type="button" class="btn btn-primary" style="float:right" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <i class="fa-solid fa-plus"></i> Agregar
+    </button>
+
+<!-- Modal para agregar un proyecto -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nuevo Proyecto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulario -->
+                    <form method="post" asp-action="OnPostAsync">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" name="Proyecto.Nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="direccion">Dirección</label>
+                            <input type="text" class="form-control" id="direccion" name="Proyecto.Direccion" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="estado">Tipo</label>
+                            <input type="number" class="form-control" id="estado" name="Proyecto.Estado" min="1" max="3" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Tabla de Proyectos -->
+    <table class="table" style="text-align:center">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Estado</th>
+                <th id="fila-administrar" scope="col"></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Proyecto in Model.ListaProyectos)
+            {
+                <tr>
+                    <th scope="row">@Proyecto.codProyecto</th>
+                    <td>@Proyecto.nombre</td>
+                    <td>@Proyecto.direccion</td>
+                    <td>@Proyecto.estado</td>
+                    <td>
+                        <a href="/Proyectos/editar/@Proyecto.codProyecto" class="btn btn-primary">
+                            <button type="button" id="boton-administrar" class="btn btn-primary">
+                                <i class="fa-solid fa-gear"></i> Administrar
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</body>
